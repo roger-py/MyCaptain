@@ -1,0 +1,33 @@
+import csv
+
+def write_into_csv(info_list):
+    with open('db.csv', 'a', newline='') as csv_file:
+        writer=csv.writer(csv_file)
+        if csv_file.tell()==0:
+            writer.writerow(['Name', 'Age', 'Contact No', 'Email ID'])
+        writer.writerow(info_list)
+
+if __name__=='__main__':
+    cond=True
+    stnum=1
+    while(cond):
+        student_info = input('Enter some student_info for student no {} in format (Name Age Contact No Email ID) :'.format(stnum))
+        print('Entered information:'+student_info)
+
+        student_info_list=student_info.split(' ')
+        print('Entered split up information:'+str(student_info_list))
+
+        print('\nThe entered information:\nName: {}\nAge: {}\nContact No: {}\nEmail ID: {}'
+        .format(student_info_list[0],student_info_list[1],student_info_list[2],student_info_list[3]))
+        choice=input('Is information correct?(yes/no)')
+        if choice=='yes':
+            write_into_csv(student_info_list)
+
+            cond_check=(input('Enter (yes or no) if to enter data for another student:'))
+            if cond_check=='yes':
+                cond=True
+                stnum+=1
+            elif cond_check=='no':
+                cond=False
+        elif choice=='no':
+            print('\nEnter again!')
