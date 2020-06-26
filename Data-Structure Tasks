@@ -1,0 +1,18 @@
+#task 1
+x=eval(input("Provide the radius: "))
+print("The area of circle with radius",x,"is:",(3.141*x**2))
+
+#task 2
+x=input("Provide the file: ")
+y=x.split('.')[1]
+dic={
+    "python":["py","pyc","py3"],
+    "text":["txt"],
+    "web":["html","php","css"],
+    "video":["flv","mp4","mov"],
+    "audio":["mp3","wav","ogg"]}
+for i in dic:
+    if y in dic[i]:
+        print("The extension of file is:",i)
+else:
+    print("Please provide the file again!")
